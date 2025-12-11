@@ -30,7 +30,61 @@
       </div>
     </div>
     }
+
+    @if (showModal) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h2>{{ editingId ? '✏️ MODIFICA ESERCIZIO' : '➕ NUOVO ESERCIZIO' }}</h2>
+          <button class="btn-close" (click)="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name">Nome Esercizio *</label>
+            <input type="text" id="name" [(ngModel)]="formData.name" placeholder="es. Panca piana" />
+          </div>
+
+          <div class="form-group">
+            <label for="muscleGroup">Gruppo Muscolare *</label>
+            <input type="text" id="muscleGroup" [(ngModel)]="formData.muscleGroup" placeholder="es. petto, schiena..." />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="sets">Serie</label>
+              <input type="number" id="sets" [(ngModel)]="formData.sets" min="1" />
+            </div>
+            <div class="form-group">
+              <label for="reps">Ripetizioni</label>
+              <input type="number" id="reps" [(ngModel)]="formData.reps" min="1" />
+            </div>
+            <div class="form-group">
+              <label for="weightKg">Peso (kg)</label>
+              <input type="number" id="weightKg" [(ngModel)]="formData.weightKg" min="0" step="0.5" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Note</label>
+            <textarea id="notes" [(ngModel)]="formData.notes" placeholder="Aggiungi note..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" (click)="closeModal()">ANNULLA</button>
+          <button class="btn-save" (click)="saveExercise()">{{ editingId ? 'SALVA MODIFICHE' : 'AGGIUNGI ESERCIZIO' }}</button>
+        </div>
+      </div>
+    </div>
+    }
   </div>
 </main>
+
+@if (showConfirm) {
+  <div class="confirm-overlay" (click)="closeConfirm()">
+    <div class="confirm-message">
+      {{ confirmMessage }}
+    </div>
+  </div>
+}
 
 <router-outlet />
