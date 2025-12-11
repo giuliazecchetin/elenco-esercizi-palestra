@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Exercise } from './models/exercise';
 import { ExerciseListComponent } from './components/exercise-list/exercise-list';
 import { ExerciseFormComponent } from './components/exercise-form/exercise-form';
@@ -8,7 +9,7 @@ import { ConfirmMessageComponent } from './components/confirm-message/confirm-me
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, ExerciseListComponent, ExerciseFormComponent, ConfirmMessageComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, ExerciseListComponent, ExerciseFormComponent, ConfirmMessageComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -17,10 +18,23 @@ export class App implements OnInit {
   private readonly STORAGE_KEY = 'gym_exercises';
   
   exercises: Exercise[] = [];
+  selectedMuscleGroup: string = 'Tutti';
   showModal = false;
   editingId: number | null = null;
   showConfirm = false;
   confirmMessage = '';
+  
+  get filteredExercises(): Exercise[] {
+    if (this.selectedMuscleGroup === 'Tutti') {
+      return this.exercises;
+    }
+    return this.exercises.filter(ex => ex.muscleGroup.toLowerCase() === this.selectedMuscleGroup.toLowerCase());
+  }
+
+  get uniqueMuscleGroups(): string[] {
+    const groups = new Set(this.exercises.map(ex => ex.muscleGroup));
+    return ['Tutti', ...Array.from(groups).sort()];
+  }
   
   formData: Exercise = {
     id: 0,

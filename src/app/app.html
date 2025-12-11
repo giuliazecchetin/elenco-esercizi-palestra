@@ -9,9 +9,19 @@
       </button>
     </div>
 
+    <!-- Filtro Gruppo Muscolare -->
+    <div class="filter-container">
+      <label for="muscleGroupFilter">Filtra per gruppo muscolare:</label>
+      <select id="muscleGroupFilter" [(ngModel)]="selectedMuscleGroup" class="filter-select">
+        @for (group of uniqueMuscleGroups; track group) {
+          <option [value]="group">{{ group }}</option>
+        }
+      </select>
+    </div>
+
     <!-- Exercise List Component -->
     <app-exercise-list 
-      [exercises]="exercises"
+      [exercises]="filteredExercises"
       (edit)="editExercise($event)"
       (delete)="deleteExercise($event)">
     </app-exercise-list>
