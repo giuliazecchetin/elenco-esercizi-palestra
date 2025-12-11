@@ -37,18 +37,19 @@ h1 {
 }
 
 marquee {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #e082d4;
+  font-family: 'Inter', sans-serif;
   color: #ffffff;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   padding: 12px;
   border: none;
   border-radius: 8px;
   margin: 20px 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   display: flex;
   align-items: center;
   gap: 10px;
+  text-transform: uppercase;
 }
 
 .icon-marquee {
@@ -63,7 +64,7 @@ marquee {
 }
 
 .btn-insert {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #e082d4;
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
@@ -71,7 +72,7 @@ marquee {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(224, 130, 212, 0.3);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -83,12 +84,12 @@ marquee {
 
 .btn-insert:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(224, 130, 212, 0.4);
 }
 
 .btn-insert:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 10px rgba(224, 130, 212, 0.3);
 }
 
 .icon-btn {
