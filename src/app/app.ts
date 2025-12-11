@@ -1,12 +1,14 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Exercise } from './models/exercise';
+import { ExerciseListComponent } from './components/exercise-list/exercise-list';
+import { ExerciseFormComponent } from './components/exercise-form/exercise-form';
+import { ConfirmMessageComponent } from './components/confirm-message/confirm-message';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, ExerciseListComponent, ExerciseFormComponent, ConfirmMessageComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -31,58 +33,58 @@ export class App implements OnInit {
   };
 
   private defaultExercises: Exercise[] = [
-  {
-    id: 1,
-    name: 'Panca piana con bilanciere',
-    muscleGroup: 'petto',
-    sets: 3,
-    reps: 8,
-    weightKg: 50,
-    notes: 'Focus sulla tecnica, niente rimbalzi'
-  },
-  {
-    id: 2,
-    name: 'Lat machine avanti',
-    muscleGroup: 'schiena',
-    sets: 3,
-    reps: 10,
-    weightKg: 40,
-    notes: 'Tirare al petto senza slanci'
-  },
-  {
-    id: 3,
-    name: 'Squat al multipower',
-    muscleGroup: 'gambe',
-    sets: 4,
-    reps: 8,
-    weightKg: 60,
-    notes: 'Scendere almeno a parallelo'
-  },
-  {
-    id: 4,
-    name: 'Curl manubri in piedi',
-    muscleGroup: 'bicipiti',
-    sets: 3,
-    reps: 12,
-    weightKg: 10
-  },
-  {
-    id: 5,
-    name: 'French press bilanciere EZ',
-    muscleGroup: 'tricipiti',
-    sets: 3,
-    reps: 10,
-    weightKg: 25
-  },
-  {
-    id: 6,
-    name: 'Plank',
-    muscleGroup: 'core',
-    sets: 3,
-    reps: 30,
-    notes: '30 secondi a serie'
-  }
-];
+    {
+      id: 1,
+      name: 'Panca piana con bilanciere',
+      muscleGroup: 'petto',
+      sets: 3,
+      reps: 8,
+      weightKg: 50,
+      notes: 'Focus sulla tecnica, niente rimbalzi'
+    },
+    {
+      id: 2,
+      name: 'Lat machine avanti',
+      muscleGroup: 'schiena',
+      sets: 3,
+      reps: 10,
+      weightKg: 40,
+      notes: 'Tirare al petto senza slanci'
+    },
+    {
+      id: 3,
+      name: 'Squat al multipower',
+      muscleGroup: 'gambe',
+      sets: 4,
+      reps: 8,
+      weightKg: 60,
+      notes: 'Scendere almeno a parallelo'
+    },
+    {
+      id: 4,
+      name: 'Curl manubri in piedi',
+      muscleGroup: 'bicipiti',
+      sets: 3,
+      reps: 12,
+      weightKg: 10
+    },
+    {
+      id: 5,
+      name: 'French press bilanciere EZ',
+      muscleGroup: 'tricipiti',
+      sets: 3,
+      reps: 10,
+      weightKg: 25
+    },
+    {
+      id: 6,
+      name: 'Plank',
+      muscleGroup: 'core',
+      sets: 3,
+      reps: 30,
+      notes: '30 secondi a serie'
+    }
+  ];
 
   ngOnInit() {
     this.loadExercises();
@@ -131,23 +133,21 @@ export class App implements OnInit {
     }
   }
 
-  saveExercise() {
-    if (!this.formData.name.trim() || !this.formData.muscleGroup.trim()) {
+  saveExercise(exercise: Exercise) {
+    if (!exercise.name.trim() || !exercise.muscleGroup.trim()) {
       alert('Nome e Gruppo muscolare sono obbligatori!');
       return;
     }
 
     if (this.editingId) {
-      // Modifica esercizio esistente
       const index = this.exercises.findIndex(ex => ex.id === this.editingId);
       if (index !== -1) {
-        this.exercises[index] = this.formData;
+        this.exercises[index] = exercise;
       }
     } else {
-      // Inserisci nuovo esercizio
       const newId = this.exercises.length > 0 ? Math.max(...this.exercises.map(ex => ex.id)) + 1 : 1;
-      this.formData.id = newId;
-      this.exercises.push({ ...this.formData });
+      exercise.id = newId;
+      this.exercises.push({ ...exercise });
     }
 
     this.saveExercises();
@@ -177,5 +177,4 @@ export class App implements OnInit {
       alert('Esercizio eliminato! ✅');
     }
   }
-
 }
