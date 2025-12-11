@@ -1,6 +1,6 @@
 .exercise-card {
-  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
-  border: 1px solid #e0e8f0;
+  background: #000000;
+  border: 1px solid #b967ae;
   border-radius: 12px;
   margin: 16px 0;
   padding: 24px;
@@ -24,7 +24,7 @@
 }
 
 .exercise-card p {
-  color: #4a4a6a;
+  color: #ffffff;
   font-size: 15px;
   margin: 10px 0;
   font-weight: 500;
@@ -73,27 +73,23 @@
 }
 
 .btn-edit {
-  background: #667eea;
+  background: #e082d4;
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .btn-edit:hover {
-  background: #5568d3;
+  background: #b967ae;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 .btn-delete {
   background: #ff6b6b;
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
 }
 
 .btn-delete:hover {
   background: #ff5252;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
 }
 
 .btn-edit:active,

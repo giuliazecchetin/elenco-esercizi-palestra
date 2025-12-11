@@ -116,8 +116,8 @@ export class App implements OnInit {
       id: 0,
       name: '',
       muscleGroup: '',
-      sets: 3,
-      reps: 10,
+      sets: 0,
+      reps: 0,
       weightKg: undefined,
       notes: ''
     };

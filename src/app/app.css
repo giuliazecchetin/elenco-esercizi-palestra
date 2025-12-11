@@ -1,7 +1,7 @@
 /* 🎨 STILE MODERNO MINIMALISTA 🎨 */
 
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef7 100%);
+  background: #000000;
   margin: 0;
   font-family: 'Inter', sans-serif;
   padding: 0;
@@ -17,7 +17,7 @@ body {
 .content {
   max-width: 900px;
   margin: 0 auto;
-  background: #ffffff;
+  background: #000000;
   border: none;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@ body {
 }
 
 h1 {
-  color: #1a1a2e;
+  color: #ffffff;
   text-align: center;
   font-size: 32px;
   font-weight: 600;
@@ -96,16 +96,7 @@ marquee {
   height: 20px;
 }
 
-.exercise-card {
-  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
-  border: 1px solid #e0e8f0;
-  border-radius: 12px;
-  margin: 16px 0;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  position: relative;
-  transition: all 0.3s ease;
-}
+
 
 .exercise-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -122,7 +113,7 @@ marquee {
 }
 
 .exercise-card p {
-  color: #4a4a6a;
+  color: #e0e0e0;
   font-size: 15px;
   margin: 10px 0;
   font-weight: 500;
@@ -133,7 +124,7 @@ marquee {
 }
 
 .exercise-card strong {
-  color: #764ba2;
+  color: #90caf9;
   font-weight: 600;
   display: flex;
   align-items: center;
